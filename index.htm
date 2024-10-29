@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashad</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f3f3;
+            overflow: hidden;
+        }
+        #quoteContainer {
+            text-align: center;
+        }
+        #quote {
+            font-size: 2em;
+            margin: 20px;
+            color: #000000;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .fullPageImage {
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="quoteContainer">
+        <h1></h1>
+        <div id="quote">Click the button to view the Magic!</div>
+        <button id="nextQuoteButton" onclick="showNextQuote()">Next</button>
+    </div>
+    <img id="fullPageImage1" class="fullPageImage" src="proposed.jpeg" alt="First Image">
+    <img id="fullPageImage2" class="fullPageImage" src="bg_img.jpg" alt="Second Image">
+
+    <script>
+        const quotes = [
+            "Hey, My dear BestFriend..",
+            "I want to tell u something plz listen carefully..",
+            "I never thought I would have such a lovely Best Friend. I met u by chance and I can never forget u",
+            "And I can never forget that day...",
+            "Oh, sorry, I didn’t tell you the real thing, by the way today is a very happy day for me...",
+            "I am so happy today because I am going to tell you something very special",
+            "Happy Anniversary Dear Cutie"
+        ];
+
+        let currentQuoteIndex = 0;
+
+        function showNextQuote() {
+            const quoteElement = document.getElementById("quote");
+            const button = document.getElementById("nextQuoteButton");
+            const quoteContainer = document.getElementById("quoteContainer");
+            const fullPageImage1 = document.getElementById("fullPageImage1");
+            const fullPageImage2 = document.getElementById("fullPageImage2");
+            const fullPageImage3 = document.getElementById("fullPageImage3");
+
+            // Show the current quote
+            quoteElement.textContent = quotes[currentQuoteIndex];
+            currentQuoteIndex++;
+
+            // Check if the last quote has been displayed
+            if (currentQuoteIndex === quotes.length) {
+                // Hide the quote container and button
+                quoteContainer.style.display = "none";
+
+                // Show the first full-page image
+                fullPageImage1.style.display = "block";
+
+                // After 5 seconds, hide the first image and show the second image
+                setTimeout(() => {
+                    fullPageImage1.style.display = "none";
+                    fullPageImage2.style.display = "block";
+                }, 4000); // 5000 milliseconds = 5 seconds
+            }
+        }
+    </script>
+
+</body>
+</html>
